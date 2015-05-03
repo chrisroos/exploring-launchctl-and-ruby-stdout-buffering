@@ -1,6 +1,10 @@
-I wondered why I wasn't always seeing output (on stdout and stderr) when using the StandardOutPath and StandardErrorPath plist directives respectively.
+## Intro
+
+I wondered why I wasn't always seeing output (on stdout and stderr) when using the `StandardOutPath` and `StandardErrorPath` plist directives respectively.
 
 These scripts show that it's caused by output buffering in Ruby. `STDOUT.sync` is set to `false` by default so Ruby will buffer the output until some unknowable (I think) time. I can avoid this by using Ruby's `Logger` with a file, or by setting `STDOUT.sync = true`.
+
+## Using the scripts
 
 Use `ruby setup.rb scripts/<name-of-script>.rb` to install a Launch Agent plist and then observe how the logfiles in logs/ change.
 
